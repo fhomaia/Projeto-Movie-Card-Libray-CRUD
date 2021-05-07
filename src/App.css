@@ -1,5 +1,32 @@
+a {
+  margin-right: 20px;
+}
+
 body {
   background-color: whitesmoke;
   box-sizing: border-box;
 }
 
+img {
+  height: 200px;
+}
+
+.movie-card {
+  width: 40%;
+  margin: 20px;
+  text-align: justify;
+}
+
+.movie-list {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-details {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+}
