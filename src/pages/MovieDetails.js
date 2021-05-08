@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-Types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom'
 
 class MovieDetails extends Component {
   constructor() {
@@ -10,9 +10,9 @@ class MovieDetails extends Component {
     this.state = {
       movie: [],
       loading: true,
-    }
+    };
   }
-  
+
   updateState = () => {
     const { match: { params: { id } } } = this.props
     const { getMovie } = movieAPI;
@@ -23,23 +23,20 @@ class MovieDetails extends Component {
   }
 
   deleteCard = () => {
-    const { match: { params: { id } } } = this.props
+    const { match: { params: { id } } } = this.props;
     const { deleteMovie } = movieAPI;
-    return deleteMovie(id)
+    return deleteMovie(id);
   }
 
   componentDidMount() {
     this.updateState();
   }
-  
+
   render() {
-    console.log(this.props)
-    // Change the condition to check the state
-    //if (false) return <Loading />;
-    const { loading } = this.state
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { loading, movie } = this.state;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (loading) {
-      return <Loading />
+      return <Loading />;
     }
     return (
       <div data-testid="movie-details" className="movie-details">
@@ -50,11 +47,19 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to={ '/' }>VOLTAR</Link>
-        <Link to={ '/' } onClick={ this.deleteCard }>DELETAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/"  onClick={ this.deleteCard }>DELETAR</Link>
       </div>
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    }) 
+  }),
+}.isRequired;
 
 export default MovieDetails;

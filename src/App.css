@@ -12,21 +12,21 @@ img {
 }
 
 .movie-card {
-  width: 40%;
   margin: 20px;
   text-align: justify;
+  width: 40%;
 }
 
 .movie-list {
-  width: 90%;
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: auto;
+  width: 90%;
 }
 
 .movie-details {
-  width: 70%;
   margin: auto;
   margin-top: 20px;
+  width: 70%;
 }

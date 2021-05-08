@@ -9,7 +9,7 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       shouldRedirect: false,
-    }
+    };
   }
 
   handleSubmit(newMovie) {
@@ -21,9 +21,9 @@ class NewMovie extends Component {
   }
 
   render() {
-    const { shouldRedirect } = this.state
+    const { shouldRedirect } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/"/>
+      return <Redirect to="/" />;
     }
     return (
       <div data-testid="new-movie">
