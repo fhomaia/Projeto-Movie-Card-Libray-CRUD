@@ -13,9 +13,13 @@ function App() {
       <div>Movie Card Library CRUD</div>
       <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       <Switch>
-        <Route exact path="/" render={ () => <MovieList/> } />
+        <Route exact path="/" render={ () => <MovieList /> } />
         <Route path="/movies/new" render={ () => <NewMovie /> } />
-        <Route exact path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
+        <Route
+          exact
+          path="/movies/:id"
+          render={ (props) => <MovieDetails { ...props } /> }
+        />
         <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
         <Route component={ NotFound } />
       </Switch>

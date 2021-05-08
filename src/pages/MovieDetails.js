@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-Types';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -13,11 +13,15 @@ class MovieDetails extends Component {
     };
   }
 
+  componentDidMount() {
+    this.updateState();
+  }
+
   updateState = () => {
-    const { match: { params: { id } } } = this.props
+    const { match: { params: { id } } } = this.props;
     const { getMovie } = movieAPI;
     return getMovie(id).then((movie) => this.setState({
-      movie: movie,
+      movie,
       loading: false,
     }));
   }
@@ -26,10 +30,6 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     const { deleteMovie } = movieAPI;
     return deleteMovie(id);
-  }
-
-  componentDidMount() {
-    this.updateState();
   }
 
   render() {
@@ -48,17 +48,17 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/"  onClick={ this.deleteCard }>DELETAR</Link>
+        <Link to="/" onClick={ this.deleteCard }>DELETAR</Link>
       </div>
     );
   }
 }
 
-EditMovie.propTypes = {
+MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string
-    }) 
+      id: PropTypes.string,
+    }),
   }),
 }.isRequired;
 
